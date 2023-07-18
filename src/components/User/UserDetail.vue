@@ -1,5 +1,6 @@
 <script setup>
 import { useUserStore } from '../../store/userStore'
+import { getInitials } from '../../utils'
 
 const store = useUserStore();
 </script>
@@ -7,7 +8,9 @@ const store = useUserStore();
 <template>
     <q-item>
         <q-item-section side>
-            <q-avatar rounded size="90px" color="primary" text-color="white">JY</q-avatar>
+            <q-avatar rounded size="90px" color="primary" text-color="white">
+              {{ getInitials(store.getActiveUser.name) }}
+            </q-avatar>
         </q-item-section>
         <q-item-section>
             <q-item-label class="text-weight-bold user-name">{{ store.getActiveUser.name  }}</q-item-label>

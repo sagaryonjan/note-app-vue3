@@ -1,6 +1,4 @@
 <script setup>
-import { ref } from 'vue'
-
 import { createNote } from '../../../services/note';
 import { useNoteFormStore } from '../../../store/noteFormStore';
 import NoteForm from '../NoteForm.vue';

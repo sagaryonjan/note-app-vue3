@@ -4,6 +4,8 @@ import { ref } from 'vue'
 import { fetchUsers } from '../../services/user';
 import { useUserStore } from '../../store/userStore'
 import EventBus from '../../event-bus/EventBus';
+import { getInitials } from '../../utils'
+
 
 const users = ref([]);
 
@@ -45,7 +47,7 @@ getUsers();
         v-ripple> 
         <!-- class="active" -->
         <q-item-section side>
-            <q-avatar rounded size="40px" color="primary" text-color="white">JY</q-avatar>
+            <q-avatar rounded size="40px" color="primary" text-color="white">{{ getInitials(user.name) }}</q-avatar>
         </q-item-section>
         <q-item-section>
             <q-item-label class="text-weight-bold user-label">{{ user.name }}</q-item-label>
