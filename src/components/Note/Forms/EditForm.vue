@@ -3,6 +3,7 @@ import NoteForm from '../NoteForm.vue';
 
 import { updateNote } from '../../../services/note';
 import { useNoteFormStore } from '../../../store/noteFormStore';
+import { useQuasar } from 'quasar';
 
 const store = useNoteFormStore();
 
@@ -10,6 +11,7 @@ const props = defineProps({
     refreshNoteList: Function,
     closeModal: Function
 });
+const $q = useQuasar()
 
 async function submitHandler() {
     try {
@@ -19,7 +21,11 @@ async function submitHandler() {
             subject: store.getFormDetail.subject,
             note: store.getFormDetail.note,
         })
-
+        $q.notify({
+          message: 'Note updated successfully.',
+          color: 'secondary',
+          position: 'top-right'
+        })
         props.closeModal();
         props.refreshNoteList();
   } catch (e) {
